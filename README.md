@@ -34,7 +34,7 @@ uv run ingest.py
 **Run ingest-sensor-data function locally**:
 
 ```console
-uv run functions-framework --src ./cloud-functions/ingest-sensor-data/main.py --target ingest_data --debug
+uv run functions-framework --source ./cloud-functions/ingest-sensor-data/main.py --target ingest_data --debug
 ```
 
 This will start a Flash server at http://localhost:8080 which can be sent data through curl or another API testing tool.
@@ -42,7 +42,7 @@ This will start a Flash server at http://localhost:8080 which can be sent data t
 **Run movement-alert function locally**:
 
 ```console
-uv run functions-framework --src ./cloud-functions/movement-alert/main.py --target alert_movement --debug
+uv run functions-framework --source ./cloud-functions/movement-alert/main.py --target alert_movement --debug
 ```
 
 This will start a Flash server at http://localhost:8080 which can be sent data through curl or another API testing tool.
