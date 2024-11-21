@@ -22,7 +22,7 @@ This project repo is managed with [uv](https://docs.astral.sh/uv/).
 **Install project dependencies:
 
 ```console
-uv pip install .
+uv pip install -r pyproject.toml
 ```
 
 **Run ingestion script**:
@@ -37,7 +37,7 @@ uv run ingest.py
 uv run functions-framework --source ./cloud-functions/ingest-sensor-data/main.py --target ingest_data --debug
 ```
 
-This will start a Flash server at http://localhost:8080 which can be sent data through curl or another API testing tool.
+This will start a Flask server at http://localhost:8080 which can be sent data through curl or another API testing tool.
 
 **Run movement-alert function locally**:
 
@@ -45,5 +45,5 @@ This will start a Flash server at http://localhost:8080 which can be sent data t
 uv run functions-framework --source ./cloud-functions/movement-alert/main.py --target alert_movement --debug
 ```
 
-This will start a Flash server at http://localhost:8080 which can be sent data through curl or another API testing tool.
+This will start a Flask server at http://localhost:8080 which can be sent data through curl or another API testing tool.
 
