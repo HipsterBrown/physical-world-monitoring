@@ -12,7 +12,7 @@ from elasticsearch import Elasticsearch, helpers
 class Settings(BaseSettings):
     elastic_api_key: str = ""
     elastic_api_key_id: str = ""
-    elastic_cloud_id: str = ""
+    elastic_connection_endpoint: str = ""
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
@@ -40,7 +40,7 @@ def ingest_data(request: Request) -> ResponseReturnValue:
     settings = Settings()
 
     es = Elasticsearch(
-        cloud_id=settings.elastic_cloud_id,
+        settings.elastic_connection_endpoint,
         api_key=settings.elastic_api_key,
     )
 

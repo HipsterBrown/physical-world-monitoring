@@ -13,7 +13,7 @@ from viam.utils import create_filter
 class Settings(BaseSettings):
     elastic_api_key: str = ""
     elastic_api_key_id: str = ""
-    elastic_cloud_id: str = ""
+    elastic_connection_endpoint: str = ""
     viam_api_key: str = ""
     viam_api_key_id: str = ""
     viam_org_id: str = ""
@@ -44,7 +44,7 @@ async def main():
     settings = Settings()
 
     es = Elasticsearch(
-        cloud_id=settings.elastic_cloud_id,
+        settings.elastic_connection_endpoint,
         api_key=settings.elastic_api_key,
     )
 

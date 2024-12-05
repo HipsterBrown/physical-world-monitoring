@@ -8,7 +8,7 @@ This project repo is managed with [uv](https://docs.astral.sh/uv/).
 
 **Ingest data from [Viam Data]() to an Elastic Search index:** [`ingest.py`](./ingest.py)
 
-**ETL function for indexing new sensor data from a [machine webhook]() to Elastic Search:** [`cloud-functions/ingest-sensor-data/main.py`](./cloud-functions/ingest-sensor-data/main.py)
+**ETL function for indexing new sensor data from a machine webhook to Elastic Search:** [`cloud-functions/ingest-sensor-data/main.py`](./cloud-functions/ingest-sensor-data/main.py)
 
 **Alerting function triggered by Elastic observability rules to blink an LED on a Viam machine:** [`cloud-functions/movement-alert/main.py`](./cloud-functions/movement-alert/main.py)
 
