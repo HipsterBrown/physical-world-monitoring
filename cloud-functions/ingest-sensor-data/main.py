@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     elastic_api_key: str = ""
     elastic_api_key_id: str = ""
     elastic_connection_endpoint: str = ""
+    elastic_index: str = ""
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
@@ -29,12 +30,15 @@ def doc_generator(data: list[dict[str, Any | datetime]], index: str):
 
 @functions_framework.http
 def ingest_data(request: Request) -> ResponseReturnValue:
+    print(f"Current request: {request.method}")
     if request.method != "POST":
         return "Ok"
 
+    print("Getting payload")
     payload = request.get_json(silent=True)
 
     if payload is None:
+        print("No payload")
         return "Ok"
 
     settings = Settings()
@@ -44,7 +48,8 @@ def ingest_data(request: Request) -> ResponseReturnValue:
         api_key=settings.elastic_api_key,
     )
 
-    index = payload.get("component_name")
+    index = settings.elastic_index or payload.get("component_name")
+    print(f"Ingesting into index: {index}")
     trigger_data = payload.get("data")
     sensor_data = [
         item | {"time_received": item["metadata"]["received_at"]}

@@ -81,12 +81,12 @@ async def main():
             ]
         )
 
-    index = settings.sensor_name
-    print("Creating index if not created yet")
-    try:
-        es.indices.create(index=index)
-    except Exception as e:
-        print(e)
+    index = "movement-data"
+    # print("Creating index if not created yet")
+    # try:
+    #     es.indices.create(index=index)
+    # except Exception as e:
+    #     print(e)
 
     print("Ingesting sensor data")
     helpers.bulk(es, doc_generator(sensor_data, index))
